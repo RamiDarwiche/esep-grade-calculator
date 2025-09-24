@@ -113,3 +113,67 @@ func TestGradeTypeString(t *testing.T) {
 		t.Errorf("Expected GetGrade to return '%s'; got '%s' instead", expected_value, actual_value)
 	}
 }
+
+func TestGradePass(t *testing.T) {
+	expected_value := "Pass"
+
+	gradeCalculator := NewGradeCalculator()
+
+	gradeCalculator.AddGrade("open source assignment", 70, Assignment)
+	gradeCalculator.AddGrade("exam 1", 80, Exam)
+	gradeCalculator.AddGrade("essay on ai ethics", 93, Essay)
+
+	actual_value := gradeCalculator.GetPassFail()
+
+	if expected_value != actual_value {
+		t.Errorf("Expected GetGrade to return '%s'; got '%s' instead", expected_value, actual_value)
+	}
+}
+
+func TestGradePass2(t *testing.T) {
+	expected_value := "Pass"
+
+	gradeCalculator := NewGradeCalculator()
+
+	gradeCalculator.AddGrade("open source assignment", 85, Assignment)
+	gradeCalculator.AddGrade("exam 1", 100, Exam)
+	gradeCalculator.AddGrade("essay on ai ethics", 93, Essay)
+
+	actual_value := gradeCalculator.GetPassFail()
+
+	if expected_value != actual_value {
+		t.Errorf("Expected GetGrade to return '%s'; got '%s' instead", expected_value, actual_value)
+	}
+}
+
+func TestGradeFail(t *testing.T) {
+	expected_value := "Fail"
+
+	gradeCalculator := NewGradeCalculator()
+
+	gradeCalculator.AddGrade("open source assignment", 70, Assignment)
+	gradeCalculator.AddGrade("exam 1", 64, Exam)
+	gradeCalculator.AddGrade("essay on ai ethics", 55, Essay)
+
+	actual_value := gradeCalculator.GetPassFail()
+
+	if expected_value != actual_value {
+		t.Errorf("Expected GetGrade to return '%s'; got '%s' instead", expected_value, actual_value)
+	}
+}
+
+func TestGradeFail2(t *testing.T) {
+	expected_value := "Fail"
+
+	gradeCalculator := NewGradeCalculator()
+
+	gradeCalculator.AddGrade("open source assignment", 44, Assignment)
+	gradeCalculator.AddGrade("exam 1", 33, Exam)
+	gradeCalculator.AddGrade("essay on ai ethics", 21, Essay)
+
+	actual_value := gradeCalculator.GetPassFail()
+
+	if expected_value != actual_value {
+		t.Errorf("Expected GetGrade to return '%s'; got '%s' instead", expected_value, actual_value)
+	}
+}
